@@ -7,7 +7,7 @@
 
 /**
  * Returns the length of the given string.
- *
+ * Возвращает длину заданной строки
  * @param {string} value - The input string to calculate the length of.
  * @return {number} - The length of the string.
  *
@@ -19,13 +19,18 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  let res = 0;
+  // проверка на тип аргумента, если строка то записывает в себя значение длины
+  if (typeof value === 'string') {
+    res += value.length;
+  }
+  return res;
 }
 
 /**
  * Returns true if the value is a string, otherwise returns false.
- *
+ * Возвращает true, если значение является строкой, в противном случае возвращает false.
  * @param {string} value - The value to check if it's a string.
  * @return {boolean} - True if the value is a string, false otherwise.
  *
@@ -37,13 +42,14 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  // Оператор instanceof проверяет, принадлежит ли объект к определённому классу.
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
  * Returns the result of concatenation of two strings.
- *
+ * Возвращает результат конкатенации двух строк.
  * @param {string} value1 - The first string to concatenate.
  * @param {string} value2 - The second string to concatenate.
  * @return {string} - The concatenated string.
@@ -53,13 +59,17 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  // через оператор + не получилось
+  // return value1 + value2;
+  // Метод concat() объединяет текст из двух или более строк и возвращает новую строку.
+  const res = '';
+  return res.concat(value1, value2);
 }
 
 /**
  * Returns the first character of the given string.
- *
+ * Возвращает первый символ заданной строки.
  * @param {string} value - The input string to extract the first character from.
  * @return {string} - The first character of the string.
  *
@@ -68,13 +78,16 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  // так тоже не получилось
+  // return value[0];
+  // Метод charAt() возвращает указанный символ из строки.
+  return value.charAt(0);
 }
 
 /**
  * Removes leading and trailing whitespace characters from the string.
- *
+ * Удаляет ведущие и замыкающие пробельные символы из строки.
  * @param {string} value - The input string to remove leading and trailing whitespaces from.
  * @return {string} - The string with leading and trailing whitespaces removed.
  *
@@ -83,13 +96,21 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  // Метод trim() удаляет пробельные символы с начала и конца строки.
+  // Пробельными символами в этом контексте считаются все собственно пробельные символы:
+  // (пробел, табуляция, неразрывный пробел и прочие) и все символы конца строки (LF, CR и прочие).
+  return value.trim();
+  // Используем регулярное выражение для удаления пробельных символов с обеих сторон строки
+  // return value.replace(/^\s+|\s+$/g, '');
+  // ^\s+: Это регулярное выражение означает "один или более пробельных символов в начале строки".
+  // /\s+$/, которое соответствует заключительным пробельным символам в конце строки
+  // '' - заменяем на пустую строку
 }
 
 /**
  * Removes only leading whitespace characters from the string.
- *
+ * Удаляет только ведущие пробельные символы из строки.
  * @param {string} value - The input string to remove leading whitespaces from.
  * @return {string} - The string with leading whitespaces removed.
  *
@@ -98,13 +119,14 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  // Метод trimStart() удаляет пробельные символы с левого конца строки.
+  return value.trimStart();
 }
 
 /**
  * Removes only trailing whitespace characters from the string.
- *
+ * Удаляет только заключительные пробельные символы из строки.
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
  *
@@ -113,8 +135,9 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  // Метод trimEnd() удаляет пробельные символы с правого конца строки.
+  return value.trimEnd();
 }
 
 /**
