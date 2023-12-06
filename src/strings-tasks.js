@@ -142,7 +142,7 @@ function removeTrailingWhitespaces(value) {
 
 /**
  * Returns a string that is repeated the specified number of times.
- *
+ * Возвращает строку, повторенную указанное количество раз.
  * @param {string} str - The string to repeat.
  * @param {number} times - The number of times to repeat the string.
  * @return {string} - The result string.
@@ -153,13 +153,24 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  let res = '';
+
+  if (times <= 0 || typeof str !== 'string') {
+    res = '';
+  } else {
+    // Используем метод repeat для повторения строки указанное количество раз
+    // Метод repeat() конструирует и возвращает новую строку,
+    // содержащую указанное количество соединённых вместе копий строки, на которой он был вызван.
+    res += str.repeat(times);
+  }
+
+  return res;
 }
 
 /**
  * Remove the first occurrence of a substring from a string.
- *
+ * Удаляет первое вхождение подстроки из строки.
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
  * @return {string} - The string with the first occurrence of the substring removed.
@@ -170,6 +181,11 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(/* str, value */) {
+  // const index = str.indexOf(value);
+  // if (index !== -1) {
+  //   return str.slice(0, index) + str.slice(index + value.length);
+  // }
+  // return str;
   throw new Error('Not implemented');
 }
 
@@ -191,7 +207,7 @@ function removeLastOccurrences(/* str, value */) {
 
 /**
  * Calculate the sum of character codes of the given string.
- *
+ * Вычисляет сумму кодов символов заданной строки.
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
  *
@@ -201,13 +217,25 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let sum = 0;
+  // проверка на то что строка имеет какое-либо значение
+  if (!str) {
+    return sum;
+  }
+
+  // Итерируем по символам строки и вычисляем сумму их кодов по Ascii table
+  for (let i = 0; i < str.length; i += 1) {
+    // Метод charCodeAt() возвращает числовое значение Юникода для символа по указанному индексу (за исключением кодовых точек Юникода, больших 0x10000).
+    sum += str.charCodeAt(i);
+  }
+
+  return sum;
 }
 
 /**
  * Checks if a string starts with a specific substring.
- *
+ * Проверяет, начинается ли строка с определенного подстроки.
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
  * @return {boolean} - Returns true if str starts with substr, false otherwise.
@@ -216,13 +244,15 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  // Метод startsWith() помогает определить,
+  // начинается ли строка с символов указанных в скобках, возвращая, соответственно, true или false.
+  return str.startsWith(substr);
 }
 
 /**
  * Checks if a string ends with a specific substring.
- *
+ * Проверяет, заканчивается ли строка определенной подстрокой.
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
  * @return {boolean} - Returns true if str starts with substr, false otherwise.
@@ -231,8 +261,10 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  // Метод endsWith() позволяет определить, заканчивается ли строка символами указанными в скобках,
+  // возвращая, соответственно, true или false.
+  return str.endsWith(substr);
 }
 
 /**
@@ -254,7 +286,7 @@ function formatTime(/* minutes, seconds */) {
 
 /**
  * Returns a string in reverse order.
- *
+ * Возвращает строку в обратном порядке.
  * @param {string} str - The input string.
  * @return {string} - The string in reverse order.
  *
@@ -262,8 +294,16 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // пришлось повозиться)
+  // Используем метод split('') для разделения строки на массив символов
+  // Метод split() разбивает объект String на массив строк путём разделения строки указанной подстрокой.
+  // И метод reverse() для обращения порядка элементов в массиве
+  // Метод reverse() на месте обращает порядок следования элементов массива.
+  // Первый элемент массива становится последним, а последний — первым.
+  // И метод join('') для объединения массива обратно в строку
+  // Метод join() объединяет все элементы массива (или массивоподобного объекта) в строку.
+  return str.split('').reverse().join('');
 }
 
 /**
