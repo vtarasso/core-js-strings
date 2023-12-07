@@ -308,7 +308,7 @@ function reverseString(str) {
 
 /**
  * Returns a string with characters in alphabetical order.
- *
+ * Возвращает строку с символами в алфавитном порядке.
  * @param {string} str - The input string.
  * @return {string} - The string in alphabetical order.
  *
@@ -317,8 +317,14 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  // Используем метод split('') для разделения строки на массив символов
+  // И метод sort() для сортировки символов в массиве
+  // Метод sort() на месте сортирует элементы массива и возвращает отсортированный массив.
+  // Сортировка не обязательно устойчива.
+  // Порядок сортировки по умолчанию соответствует порядку кодовых точек Unicode.
+  // И метод join('') для объединения массива обратно в строку
+  return str.split('').sort().join('');
 }
 
 /**
@@ -351,8 +357,19 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = 'aeiouyAEIOUY';
+  let count = 0;
+
+  for (let i = 0; i < str.length; i += 1) {
+    // Метод includes() проверяет, содержит ли строка заданную подстроку, и возвращает, соответственно true или false.
+    // Метод charAt() возвращает указанный символ из строки.
+    if (vowels.includes(str.charAt(i))) {
+      count += 1;
+    }
+  }
+
+  return count;
 }
 
 /**
@@ -398,8 +415,17 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const words = str.split(' ');
+  const arr = [];
+  for (let i = 0; i < words.length; i += 1) {
+    // Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.
+    // без этого метода намучался, превращая массив в строку через += и пытался разъединить через джоин, что конечно не вышло
+    // Метод join() объединяет все элементы массива (или массивоподобного объекта) в строку.
+    arr.push(words[i].split('').reverse().join(''));
+  }
+
+  return arr.join(' ');
 }
 
 /**
